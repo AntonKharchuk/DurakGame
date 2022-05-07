@@ -30,7 +30,7 @@ namespace DurakGame
             {
                 if(CanSetUnder(card))
                 {
-                    CardPair[CardPairCounter].UnderCard = new Card(card);
+                    CardPair[CardPairCounter] = new CardPair(card);
                 }
             }
         }
@@ -40,13 +40,29 @@ namespace DurakGame
             {
                 return true;
             }
+            else if(CardPairCounter>6)
+            {
+                return false;
+            }
             return EvalubleCards.Contains(cc.Num);
+        }
+        public bool CanSetUnder(Player pp)
+        {
+           
+            foreach (var card in pp.PlayerCards)
+            {
+                if (CanSetUnder(card))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public void SetUpCard(Card card)
         {
             if (CanSetUp(card))
             {
-                CardPair[CardPairCounter].UpCard = new Card(card);
+                CardPair[CardPairCounter++].UpCard = new Card(card);
                 EvalubleCards.Add(card.Num);
             }
             else
@@ -68,14 +84,51 @@ namespace DurakGame
 
             return false;
         }
-        public bool TurnIsOver()
+        public bool CanBito()
         {
-            if (CardPair[CardPairCounter].UpCard != null)
+            if (CardPairCounter==0)
+            {
+                return false;
+            }
+            else if (CardPair[CardPairCounter]==null)
             {
                 return true;
             }
+           
             return false;
         }
+        public void Bito()
+        {
+            EvalubleCards = null;
+            CardPair = new CardPair[6];
+            CardPairCounter = 0;
+        }
+        public List<Card> TakeAll()
+        {
+            List<Card> res = new List<Card> { };
+            foreach (var pair in CardPair)
+            {
+                if (pair!=null)
+                {
+                    if (pair.UnderCard != null)
+                    {
+                        res.Add(pair.UnderCard);
+                        if (pair.UpCard != null)
+                        {
+                            res.Add(pair.UpCard);
+                        }
+
+                    }
+
+                }
+            }
+            EvalubleCards = null;
+            CardPair = new CardPair[6];
+            CardPairCounter = 0;
+            return res;
+        }
+
+
 
         public override string ToString()
         {
