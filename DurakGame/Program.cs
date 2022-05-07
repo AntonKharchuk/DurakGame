@@ -121,8 +121,6 @@ namespace DurakGame
                             {
                                 if (GameTable.CanSetUnder(Player1))
                                 {
-                                    
-
                                     do
                                     {
                                         Console.WriteLine("-----------------------------------------------------");
@@ -176,6 +174,8 @@ namespace DurakGame
                                 }
                                 CardsToSix(Player1);
                                 Player1Turn = true;
+                                Alldone = true;
+
                             }
                             else if (!int.TryParse(ansver, out int r))
                             {
@@ -336,7 +336,7 @@ namespace DurakGame
                                 CardsToSix(Player2);
                                
                                 Player1Turn = false;
-
+                                Alldone = true;
                             }
                             else if (!int.TryParse(ansver, out int r))
                             {
