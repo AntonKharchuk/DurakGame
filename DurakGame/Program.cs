@@ -51,7 +51,7 @@ namespace DurakGame
                         Console.WriteLine(Player2);
                         Console.WriteLine(GameTable);
                         Console.WriteLine(Player1);
-                        Console.WriteLine("Wright num of card to take this card, b to bito, ");
+                        Console.WriteLine("Wright num of card to play this card, b to bito, ");
 
                         bool Alldone = false;
                         do
@@ -110,7 +110,7 @@ namespace DurakGame
                         Console.WriteLine(Player1);
                         Console.WriteLine(GameTable);
                         Console.WriteLine(Player2);
-                        Console.WriteLine("Wright num of card to take this card, t to take all ");
+                        Console.WriteLine("Wright num of card to play this card, t to take all ");
 
                         bool Alldone = false;
                         do
@@ -214,7 +214,7 @@ namespace DurakGame
                         Console.WriteLine(Player1);
                         Console.WriteLine(GameTable);
                         Console.WriteLine(Player2);
-                        Console.WriteLine("Wright num of card to take this card, b to bito, ");
+                        Console.WriteLine("Wright num of card to play this card, b to bito, ");
 
                         bool Alldone = false;
                         do
@@ -273,7 +273,7 @@ namespace DurakGame
                         Console.WriteLine(Player2);
                         Console.WriteLine(GameTable);
                         Console.WriteLine(Player1);
-                        Console.WriteLine("Wright num of card to take this card, t to take all ");
+                        Console.WriteLine("Wright num of card to play this card, t to take all ");
 
                         bool Alldone = false;
                         do
@@ -369,7 +369,7 @@ namespace DurakGame
                     }
                 }
 
-            } while (Deck.CardCount>10);
+            } while (!(Deck.CardCount<0&&(Player1.PlayerCards.Count==0| Player2.PlayerCards.Count == 0)));
 
 
 
