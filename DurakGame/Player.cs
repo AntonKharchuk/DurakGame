@@ -17,7 +17,20 @@ namespace DurakGame
         {
             PlayerCards.Add(card);
         }
-     
+
+        public Card PutCard(int index)
+        {
+            if (index<PlayerCards.Count && index>=0)
+            {
+                Card card = PlayerCards[index];
+                PlayerCards.RemoveAt(index);
+                return card;
+            }
+            else
+            {
+                throw new Exception("out of range");
+            }
+        }
 
         public override string ToString()
         {

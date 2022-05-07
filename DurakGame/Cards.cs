@@ -30,6 +30,15 @@ namespace DurakGame
                 }
             }
         }
+        public Card(Card card)
+        {
+            num = card.Num;
+            suit = card.Suit;
+        }
+        public Card()
+        {
+
+        }
         public override string ToString()
         {
             return "|"+Num.ToString() + "/" + Suit.ToString() + "|" ;

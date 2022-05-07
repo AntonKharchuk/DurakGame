@@ -26,7 +26,7 @@ namespace DurakGame
                 Player1.TakeCard(Deck.GetCard());
             }
 
-            Console.WriteLine(Player1);
+    
 
             Player Player2 = new Player();
 
@@ -35,8 +35,19 @@ namespace DurakGame
                 Player2.TakeCard(Deck.GetCard());
             }
 
+            Table GameTable = new Table(Deck.Cards[0].Suit);
+
+            GameTable.SetUnderCard(Player1.PutCard(3));
+
+
+            Console.WriteLine(Player1);
+            Console.WriteLine(GameTable);
             Console.WriteLine(Player2);
 
+            GameTable.SetUpCard(Player2.PutCard(3));
+            Console.WriteLine(Player1);
+            Console.WriteLine(GameTable);
+            Console.WriteLine(Player2);
 
         }
     }
