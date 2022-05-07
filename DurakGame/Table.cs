@@ -28,15 +28,23 @@ namespace DurakGame
             }
             else
             {
-                if(EvalubleCards.Contains(card.Num))
+                if(CanSetUnder(card))
                 {
                     CardPair[CardPairCounter].UnderCard = new Card(card);
                 }
             }
         }
+        public bool CanSetUnder(Card cc)
+        {
+            if (EvalubleCards == null)
+            {
+                return true;
+            }
+            return EvalubleCards.Contains(cc.Num);
+        }
         public void SetUpCard(Card card)
         {
-            if (CanSet(card))
+            if (CanSetUp(card))
             {
                 CardPair[CardPairCounter].UpCard = new Card(card);
                 EvalubleCards.Add(card.Num);
@@ -45,19 +53,20 @@ namespace DurakGame
             {
                 throw new Exception("False card to set");
             }
-            bool CanSet(Card cc)
+           
+        }
+        public bool CanSetUp(Card cc)
+        {
+            if (CardPair[CardPairCounter].UnderCard == null)
             {
-                if (CardPair[CardPairCounter].UnderCard == null)
-                {
-                    return false;
-                }
-                else if((card.Suit ==CardPair[CardPairCounter].UnderCard.Suit & card.Num> CardPair[CardPairCounter].UnderCard.Num)|| (card.Suit == Trump & CardPair[CardPairCounter].UnderCard.Suit == Trump & card.Num > CardPair[CardPairCounter].UnderCard.Num)||(card.Suit == Trump & CardPair[CardPairCounter].UnderCard.Suit != Trump))
-                {
-                    return true;
-                }
-
                 return false;
             }
+            else if ((cc.Suit == CardPair[CardPairCounter].UnderCard.Suit & cc.Num > CardPair[CardPairCounter].UnderCard.Num) || (cc.Suit == Trump & CardPair[CardPairCounter].UnderCard.Suit == Trump & cc.Num > CardPair[CardPairCounter].UnderCard.Num) || (cc.Suit == Trump & CardPair[CardPairCounter].UnderCard.Suit != Trump))
+            {
+                return true;
+            }
+
+            return false;
         }
         public bool TurnIsOver()
         {
