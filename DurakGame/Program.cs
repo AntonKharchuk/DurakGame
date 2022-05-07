@@ -26,18 +26,6 @@ namespace DurakGame
 
             Table GameTable = new Table(Deck.Cards[0].Suit);
 
-            //GameTable.SetUnderCard(Player1.PutCard(3));
-
-            //Console.WriteLine(Player1);
-            //Console.WriteLine(GameTable);
-            //Console.WriteLine(Player2);
-
-            //GameTable.SetUpCard(Player2.PutCard(3));
-            //Console.WriteLine(Player1);
-            //Console.WriteLine(GameTable);
-            //Console.WriteLine(Player2);
-
-
             bool Player1Turn = true;
             bool Player1Atack = true;
             do
